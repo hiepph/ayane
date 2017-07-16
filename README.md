@@ -25,6 +25,15 @@ $ psql
 
 ## Deploy
 
++ First start:
+
 ```sh
 $ python main.py
+```
+
++ Zero downtime deploy:
+```
+$ git pull origin master
+# Chat with @AyaneruBot
+> /restart
 ```

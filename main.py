@@ -140,7 +140,7 @@ def randomquote(bot, update, args):
 def getquote(bot, update, args):
     q = Quote(DB_CONN, DB_CUR)
     if len(args) == 0:
-        bot.send_message(chat_id=update.message.chat_id, text="ERROR: /getquote id")
+        # bot.send_message(chat_id=update.message.chat_id, text="ERROR: /getquote id")
         return
     else:
         qid = args[0]
@@ -149,7 +149,7 @@ def getquote(bot, update, args):
 def deletequote(bot, update, args):
     q = Quote(DB_CONN, DB_CUR)
     if len(args) == 0:
-        bot.send_message(chat_id=update.message.chat_id, text="ERROR: /deletequote id")
+        # bot.send_message(chat_id=update.message.chat_id, text="ERROR: /deletequote id")
         return
     else:
         qid = args[0]

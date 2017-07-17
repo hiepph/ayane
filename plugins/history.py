@@ -13,5 +13,5 @@ class History:
         self.db_conn.commit()
 
     def latest(self):
-        self.db_cur.execute("SELECT * FROM history ORDER BY created_at DESC LIMIT(1);")
+        self.db_cur.execute("SELECT * FROM history ORDER BY id DESC LIMIT(1);")
         return self.db_cur.fetchone()

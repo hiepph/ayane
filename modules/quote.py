@@ -14,7 +14,7 @@ class Quote:
         self.db_conn.commit()
 
     def latest_quote(self):
-        self.db_cur.execute("SELECT * FROM quotes ORDER BY created_at DESC LIMIT(1);")
+        self.db_cur.execute("SELECT * FROM quotes ORDER BY id DESC LIMIT(1);")
         return quote_info(self.db_cur.fetchone())
 
     def random_quote(self, author=None):
@@ -31,9 +31,9 @@ class Quote:
 
     def list_quotes(self, author=None):
         if author == None:
-            self.db_cur.execute("SELECT * FROM quotes ORDER BY created_at DESC;")
+            self.db_cur.execute("SELECT * FROM quotes ORDER BY id DESC;")
         else:
-            self.db_cur.execute("SELECT * FROM quotes WHERE author='%s' ORDER BY created_at DESC" % author)
+            self.db_cur.execute("SELECT * FROM quotes WHERE author='%s' ORDER BY id DESC" % author)
 
         quotes = self.db_cur.fetchall()
         if len(quotes) == 0:

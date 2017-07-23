@@ -20,7 +20,7 @@ class Doggo:
             r = requests.get("%s/breed/%s/images/random" % (self.url, breed))
 
         res = r.json()
-        if res['code'] == "404":
+        if res['status'] == "error":
             return None
         else:
             return res['message']

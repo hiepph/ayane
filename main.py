@@ -157,9 +157,22 @@ def deletequote(bot, update, args):
         q.delete_quote(qid)
         bot.send_message(chat_id=update.message.chat_id, text="Done.")
 
+def listdoggos(bot, update):
+    doggo = Doggo()
+    bot.send_message(chat_id=update.message.chat_id, text=doggo.list())
+
 def doggo(bot, update, args):
     doggo = Doggo()
-    bot.send_photo(chat_id=update.message.chat_id, photo=doggo.random())
+    if len(args) == 0:
+        breed = None
+    else:
+        breed = args[0]
+
+    res = doggo.random(breed)
+    if res == None:
+        bot.send_message(chat_id=update.message.chat_id, text="Not found.")
+    else:
+        bot.send_photo(chat_id=update.message.chat_id, photo=doggo.random(breed))
 
 
 if __name__ == '__main__':
@@ -184,7 +197,7 @@ if __name__ == '__main__':
     dispatcher.add_handler(CommandHandler('getquote', getquote, pass_args=True))
     dispatcher.add_handler(CommandHandler('deletequote', deletequote, pass_args=True))
 
-    # dispatcher.add_handler(CommandHandler('listdoggos', listdoggos, pass_args=True))
+    dispatcher.add_handler(CommandHandler('listdoggos', listdoggos))
     dispatcher.add_handler(CommandHandler('doggo', doggo, pass_args=True))
 
     # Message Handler

@@ -55,6 +55,9 @@ QUOTE
 /randomquote [author] - Random a quote
 /getquote id - Get a quote with id
 /deletequote id - Delete a quote with id
+
+CONTRIBUTE
+https://github.com/hiepph/ayaneru
 """
 
 

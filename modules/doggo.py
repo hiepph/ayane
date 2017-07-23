@@ -16,12 +16,11 @@ class Doggo:
     def random(self, breed=None):
         if breed == None:
             r = requests.get("%s/breeds/image/random" % self.url)
-            res = r.json()
-            return res['message']
         else:
             r = requests.get("%s/breed/%s/images/random" % (self.url, breed))
-            if r.status_code == 404:
-                return None
-            else:
-                res = r.json()
-                return res['message']
+
+        res = r.json()
+        if res.code == "404":
+            return None
+        else:
+            return res['message']

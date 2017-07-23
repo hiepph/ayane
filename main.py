@@ -15,6 +15,7 @@ from plugins.history import History
 
 from modules.bilac import Bilac
 from modules.quote import Quote
+from modules.doggo import Doggo
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s \
@@ -157,7 +158,8 @@ def deletequote(bot, update, args):
         bot.send_message(chat_id=update.message.chat_id, text="Done.")
 
 def doggo(bot, update, args):
-    bot.send_photo(chat_id=update.message.chat_id, photo='https://i.ytimg.com/vi/6cYttFUJQhA/maxresdefault.jpg')
+    doggo = Doggo()
+    bot.send_photo(chat_id=update.message.chat_id, photo=doggo.random())
 
 
 if __name__ == '__main__':

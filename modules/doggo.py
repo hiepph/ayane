@@ -9,4 +9,6 @@ class Doggo:
         self.url = url
 
     def random(self):
-        pass
+        r = requests.get("%s/breeds/image/random" % self.url)
+        res = r.json()
+        return res['message']

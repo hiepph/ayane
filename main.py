@@ -89,7 +89,7 @@ def response(bot, update):
         elif cmd == "content":
             author = history.latest()['message']
 
-            history.remember(update.message.text, flag)
+            # history.remember(update.message.text, flag)
             flag = None
 
             q.add_quote(author, update.message.text)
@@ -156,6 +156,9 @@ def deletequote(bot, update, args):
         q.delete_quote(qid)
         bot.send_message(chat_id=update.message.chat_id, text="Done.")
 
+def doggo(bot, update, args):
+    bot.send_photo(chat_id=update.message.chat_id, photo='https://i.ytimg.com/vi/6cYttFUJQhA/maxresdefault.jpg')
+
 
 if __name__ == '__main__':
     # Create the EventHandler and pass bot's token
@@ -168,13 +171,19 @@ if __name__ == '__main__':
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler('help', helpme))
     dispatcher.add_handler(CommandHandler('restart', restart))
+
     dispatcher.add_handler(CommandHandler('ping', ping))
+
     dispatcher.add_handler(CommandHandler('elo', elo))
+
     dispatcher.add_handler(CommandHandler('addquote', addquote))
     dispatcher.add_handler(CommandHandler('listquotes', listquotes, pass_args=True))
     dispatcher.add_handler(CommandHandler('randomquote', randomquote, pass_args=True))
     dispatcher.add_handler(CommandHandler('getquote', getquote, pass_args=True))
     dispatcher.add_handler(CommandHandler('deletequote', deletequote, pass_args=True))
+
+    # dispatcher.add_handler(CommandHandler('listdoggos', listdoggos, pass_args=True))
+    dispatcher.add_handler(CommandHandler('doggo', doggo, pass_args=True))
 
     # Message Handler
     dispatcher.add_handler(MessageHandler(Filters.text, response))

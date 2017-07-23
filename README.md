@@ -37,3 +37,8 @@ $ git pull origin master
 # Chat with @AyaneruBot
 > /restart
 ```
+
+
+## References
+
++ Dog API: https://dog.ceo/dog-api/

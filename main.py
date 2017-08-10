@@ -48,6 +48,7 @@ HELP = """At your service, sir.
 
 BILAC
 /elo - Check members' elo
+/nextmatch - Get next match
 
 QUOTE
 /addquote - create a new quote with (author, content)
@@ -116,6 +117,10 @@ def ping(bot, update):
 
 def elo(bot, update):
     rep = "\n".join(Bilac().elo())
+    bot.send_message(chat_id=update.message.chat_id, text=rep)
+
+def next_match(bot, update):
+    rep = Bilac().next_match()
     bot.send_message(chat_id=update.message.chat_id, text=rep)
 
 def addquote(bot, update):
@@ -193,6 +198,7 @@ if __name__ == '__main__':
     dispatcher.add_handler(CommandHandler('ping', ping))
 
     dispatcher.add_handler(CommandHandler('elo', elo))
+    dispatcher.add_handler(CommandHandler('nextmatch', next_match))
 
     dispatcher.add_handler(CommandHandler('addquote', addquote))
     dispatcher.add_handler(CommandHandler('listquotes', listquotes, pass_args=True))
